@@ -52,25 +52,20 @@ const ListofCategory = () => {
       
 
       return (
-        <View>
+        <View style={styles.container}>
           <Text style={styles.title}>List of Category</Text>
-    
-        
           <FlatList
-          
           data={data}
           keyExtractor={(item) => item.categoryId.toString()} // Use a unique key
           renderItem={({ item }) => (
             <View style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc' ,flex: 1, flexDirection: 'row'}}>
               {/* <Text>Category ID: {item.categoryId}</Text> */}
               
-              <Text>Explain: {item.explain}</Text>
-              {/* <Text>User ID: {item.userId}</Text> */}
-              {/* <Text>Saved Date: {new Date(item.savedDate).toLocaleString()}</Text> */}
-              {/* <Button title='Edit' onPress={() => {console.log("Clicked Edit Button"  )}} />
-              <Button title='Delete' onPress={() => {console.log("Clicked Delete Button" + item.categoryId )}} /> */}
-    
-    
+              <Text> {item.explain}</Text>
+              <View style= {styles.buttons}>
+              <Button title='Edit' onPress={() => {console.log("Clicked Edit Button"  )}} />
+              <Button title='Delete' onPress={() => {console.log("Clicked Delete Button" + item.categoryId )}} />
+              </View>
             </View>
           )}
         />
@@ -90,11 +85,18 @@ export default ListofCategory
 
 const styles = StyleSheet.create({
     container:{
-
+      flex:8,
+      // backgroundColor:'yellow'
     },
     title:{
-      justifyContent:'center' ,
 
+    },
+    buttons:{
+    flex:2,
+    flexDirection:'row',
+    alignItems:'flex-end',
+    justifyContent:'flex-end'
     }
+
 
 })

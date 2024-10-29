@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ActivityIndicator, FlatList, Button, TextInput ,StyleSheet  } from 'react-native';
+import { View, Text, ActivityIndicator, FlatList, Button, TextInput ,StyleSheet, ImageBackground  } from 'react-native';
 import axios from 'axios';
 import { Category } from '../Models/Category'; // Import the interface
 import ListofCategory from '../components/Category/ListofCategory';
+import InsertofCategory from '../components/Category/InsertofCategory';
 
-const CategoryList: React.FC = () => {
+const CategoryScreen = () => {
   const [data, setData] = useState<Category[]>([]); // Use the interface for state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null); // Specify error type
@@ -23,13 +24,16 @@ const CategoryList: React.FC = () => {
 
   // Render the data
   return (
-    <View>
+    <View style={styles.container}>
+      <ImageBackground 
+      source={ require('../utils/images/backgroundImage.jpg') }
+      style={styles.background}
+      >
 
       <ListofCategory />
+      <InsertofCategory />
 
-      <TextInput placeholder='New Category' />
-      <Button title='+' onPress={(category) => {console.log("cickedbutton" + category)}} />
-
+      </ImageBackground>
     </View>
    
   );
@@ -39,20 +43,22 @@ const CategoryList: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'row', // Arrange children in a row
-    justifyContent: 'space-around', // Optional: Adjust spacing
-    alignItems: 'center', // Optional: Center items vertically
+    flex:12,
+    backgroundColor:'yellow',
   },
-  box: {
-    width: 100,
-    height: 100,
-    backgroundColor: 'lightblue',
-    justifyContent: 'center',
-    alignItems: 'center',
+  list: {
+    flex:9
+  },
+  insert:{
+    flex:1,
+  },
+  background: {
+    flex: 1, // Make the background cover the entire screen
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
 })
 
 
 
-export default CategoryList;
+export default CategoryScreen;
