@@ -31,10 +31,7 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.container}>
 
-      <ImageBackground 
-      source={ require('../StockTrace/src/utils/images/backgroundImage.jpg') }
-      style={styles.background}
-      />
+      
 
       <View style = {styles.titleBox}>
         <Text style = {styles.appTitle}>Stock Trace</Text>

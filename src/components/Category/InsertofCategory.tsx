@@ -1,18 +1,21 @@
 import { View, Text, TextInput, Button ,StyleSheet} from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import categoryService,{CategoryResult} from '../../services/CategoryService';
 
 const InsertofCategory = () => {
 
 
-    function insertCategory():void {
-        console.log("Clicked the insert button")
+    const [category,setCategory] = useState("");
+
+     function  insertCategory(explain:String):void {
+      const result =   categoryService.postData(category)
     }
 
 
   return (
     <View style = {styles.insertView}>
-        <TextInput style={styles.textInput} placeholder='New Category' />
-        <Button title='+' onPress={(category) => {console.log("cickedbutton" + category)}} />
+        <TextInput style={styles.textInput} placeholder='New Category'  onChangeText={(category) => setCategory(category)} />
+        <Button title='+' onPress={() => { insertCategory(category) }} />
     </View>
   )
 }
