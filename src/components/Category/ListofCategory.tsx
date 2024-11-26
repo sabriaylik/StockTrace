@@ -3,15 +3,17 @@ import { useEffect, useState } from 'react';
 import { ActivityIndicator, Button, FlatList, StyleSheet } from 'react-native';
 
 import { View, Text } from 'react-native'
-import { Category } from '../../Models/Category';
 import axios from 'axios';
 import categoryService from '../../services/CategoryService';
+import Dialog from 'react-native-dialog';
+import { Category } from '../../Models/Category';
 
 
 const ListofCategory = () => {
     const [data, setData] = useState<Category[]>([]); // Use the interface for state
     const [loading, setLoading] = useState(true);
     const [err, setError] = useState(null); // Specify error type
+    const [visible, setVisible] = useState(false);
 
     const fetchData = async () => {
       try {
@@ -23,6 +25,23 @@ const ListofCategory = () => {
           setLoading(false);
       }
   };
+
+
+    const clickEdit = () => {
+      console.log("Clicked Edit Button"  )
+      setVisible(true);
+    }
+
+    const clickDelete = async (categoryId: number) => {
+      console.log("Clicked Delete Button" + categoryId )
+
+      const result = await categoryService.deleteData(categoryId);
+      fetchData();
+
+    }
+
+
+
 
     useEffect(() => {
         fetchData();
@@ -50,9 +69,24 @@ const ListofCategory = () => {
             <View style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc' ,flex: 1, flexDirection: 'row'}}>              
               <Text> {item.explain}</Text>
               <View style= {styles.buttons}>
-              <Button title='Edit' onPress={() => {console.log("Clicked Edit Button"  )}} />
-              <Button title='Delete' onPress={() => {console.log("Clicked Delete Button" + item.categoryId )}} />
+              {/* <Button title='Edit' onPress={() => {clickEdit()}} /> */}
+              <Button title='Delete' onPress={() => {clickDelete(item.categoryId)}} />
               </View>
+
+
+
+              {/* <Dialog.Container visible={visible}>
+        <Dialog.Title>Dialog Title</Dialog.Title>
+        <Dialog.Description>
+          This is a simple dialog message.
+        </Dialog.Description> */}
+        {/* <Dialog.Button label="Cancel" onPress={handleCancel} />
+        <Dialog.Button label="Confirm" onPress={handleConfirm} /> */}
+      {/* </Dialog.Container> */}
+
+
+
+
             </View>
           )}
         />

@@ -1,6 +1,6 @@
 import { View, Text, TextInput, Button ,StyleSheet} from 'react-native'
 import React, { useState } from 'react'
-import categoryService,{CategoryResult} from '../../services/CategoryService';
+import categoryService,{} from '../../services/CategoryService';
 
 const InsertofCategory = () => {
 
@@ -9,6 +9,7 @@ const InsertofCategory = () => {
 
      function  insertCategory(explain:String):void {
       const result =   categoryService.postData(category)
+      
     }
 
 

@@ -18,6 +18,7 @@ import {
 import {
 } from 'react-native/Libraries/NewAppScreen';
 import CategoryScreen from './src/screens/CategoryScreen';
+import ProductScreen from './src/screens/ProductScreen';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -36,8 +37,8 @@ function App(): React.JSX.Element {
       <View style = {styles.titleBox}>
         <Text style = {styles.appTitle}>Stock Trace</Text>
       </View>
-      <CategoryScreen  />
-     
+      {/* <CategoryScreen  /> */}
+     <ProductScreen />
      
     </SafeAreaView>
   );

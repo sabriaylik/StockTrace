@@ -1,24 +1,32 @@
 
 import axios, { AxiosResponse } from 'axios';
-import {Category } from '../Models/Category';
+import {API_URL,CATEGORY_DELETE,CATEGORY_INSERT,CATEGORY_SELECTALL} from '../utils/constants/constants';
+import { Category, ResponseCategory, ResponseCategoryAll } from '../Models/Category';
+import { BaseResponse } from '../Models/BaseResponse';
 
-
-export interface CategoryResult {
-    success:boolean,
-    message:String,
-    data:Category[]
-  }
+// export interface CategoryResult {
+//     success:boolean,
+//     message:String,
+//     data:Category[]
+//   }
 
 class CategoryService{
 
-     baseUrl: string ="http://192.168.1.101:6565/SP_war/sp/stock/category/selectall";
-     insertUrl: string ="http://192.168.1.101:6565/SP_war/sp/stock/category/insert";
 
 
     public async getData(): Promise<Category[]> {
         try {
-            const response: AxiosResponse<CategoryResult> = await axios.get(`${this.baseUrl}`);
-            console.log(response.data.data);
+            const response: AxiosResponse<ResponseCategoryAll> = await axios.get(`${API_URL+CATEGORY_SELECTALL}`);
+            // console.log(`${API_URL+CATEGORY_SELECTALL}`);
+            // console.log("\t\t   LIST OF CATEGORIES \n");
+            // console.log(response.data);
+            // console.log(JSON.stringify(response.data.data, null, 4).toString());
+
+            // for (let i = 0; i < response.data.data.length; i++) {
+            //     console.log(JSON.stringify(response.data.data[i], null, 2));
+            //   }
+
+            // console.log("\t\t   LIST OF CATEGORIES  END \n")
             return response.data.data;
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -28,25 +36,46 @@ class CategoryService{
 
 
 
+
     // Example method to post data
-    public async postData(data: String): Promise<CategoryResult> {
+    public async postData(data: String): Promise<Category[]> {
         try {
             const category = {
                 categoryId : null,
                 explain : data,
-                savedDate:'2024-10-30',
+                savedDate:new Date(),
                 userId:-1
 
             }
-            console.log(category);
-            const response: AxiosResponse<CategoryResult> = await axios.post(`${this.insertUrl}`, category);
-            console.log(response.data);
-            return response.data;
+            // console.log( `${API_URL+CATEGORY_INSERT}`  );
+            const response: AxiosResponse<ResponseCategoryAll> = await axios.post(`${API_URL+CATEGORY_INSERT}`, category);
+            // console.log(response.data);
+            return response.data.data;
         } catch (error) {
+            
             console.error('Error posting data:', error);
             throw error; // Re-throw or handle error as necessary
         }
     }
+
+
+    public async deleteData(data:number): Promise<BaseResponse> {
+        try {
+            
+            // console.log( `${API_URL+CATEGORY_DELETE+"/"+data}  `   );
+            const response: AxiosResponse<BaseResponse> = await axios.delete(`${API_URL+CATEGORY_DELETE+"/"+data}`);
+            // console.log(response.data);
+            return response.data;
+        } catch (error) {
+            
+            console.error('Error posting data:', error);
+            throw error; // Re-throw or handle error as necessary
+        }
+    }
+
+
+
+
 
 }
 
