@@ -1,7 +1,7 @@
 import { BaseResponse } from "./BaseResponse";
 
 // Category.ts (optional: separate file for interface)
-export interface Category {
+export interface ICategory {
     categoryId: number;
     explain: string;
     userId: number;
@@ -9,11 +9,11 @@ export interface Category {
   }
 
 export interface ResponseCategoryAll extends BaseResponse{
-  data:Category[];
+  data:ICategory[];
 }
 
 export interface ResponseCategory extends BaseResponse {
-  data : Category;
+  data : ICategory;
 }
 
 

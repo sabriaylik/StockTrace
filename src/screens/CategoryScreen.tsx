@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ActivityIndicator, FlatList, Button, TextInput ,StyleSheet, ImageBackground  } from 'react-native';
 import axios from 'axios';
-import { Category } from '../Models/Category'; // Import the interface
+import { Category } from '../Models/Interface/Category'; // Import the interface
 import ListofCategory from '../components/Category/ListofCategory';
 import InsertofCategory from '../components/Category/InsertofCategory';
 

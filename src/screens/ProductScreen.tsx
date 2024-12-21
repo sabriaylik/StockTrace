@@ -3,7 +3,7 @@
 
 import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Product } from '../Models/Product'
+import { IProduct } from '../Models/Interface/Product'
 import ListofProduct from '../components/Product/ListofProduct';
 import InsertofProduct from '../components/Product/InsertofProduct';
 

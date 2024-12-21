@@ -2,7 +2,7 @@
 
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Product } from '../../Models/Product';
+import { Product } from '../../Models/Interface/Product';
 import productService from '../../services/ProductService';
 
 const ListofProduct = () => {

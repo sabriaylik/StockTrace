@@ -16,6 +16,7 @@
     "react-hook-form": "^7.53.1",
     "react-native": "0.76.0",
     "react-native-dialog": "^9.3.0",
+    "react-native-dropdown-picker": "^5.4.6",
     "react-native-element-dropdown": "^2.12.2",
     "yup": "^1.4.0"
   },

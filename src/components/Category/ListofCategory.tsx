@@ -6,7 +6,7 @@ import { View, Text } from 'react-native'
 import axios from 'axios';
 import categoryService from '../../services/CategoryService';
 import Dialog from 'react-native-dialog';
-import { Category } from '../../Models/Category';
+import { Category } from '../../Models/Interface/Category';
 
 
 const ListofCategory = () => {

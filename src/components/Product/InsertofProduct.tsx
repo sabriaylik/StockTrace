@@ -4,6 +4,7 @@ import { View, Text, Button, StyleSheet, TouchableOpacity, Modal } from 'react-n
 import React, { useState } from 'react'
 import InsertProductModal from './InsertProductModal';
 import { Dropdown } from 'react-native-element-dropdown';
+import InsertProductModal2 from './InsertProductModal2';
 
 export default function InsertofProduct() {
 
@@ -41,6 +42,7 @@ export default function InsertofProduct() {
                 >
 
 <InsertProductModal /> 
+{/* <InsertProductModal2 />  */}
 
             {/* <Dropdown 
       data={items}
