@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import { useForm, Controller, FieldValues, SubmitHandler } from 'react-hook-form';
+import { useForm, Controller,  SubmitHandler } from 'react-hook-form';
 
 // Doğrulama kuralları burada tanımlanır
 const validationRules = {

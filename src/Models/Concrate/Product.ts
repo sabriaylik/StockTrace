@@ -1,5 +1,5 @@
-import Category from "./Category"
-import MeasureUnit from "./MeasureUnit"
+import Category from './Category';
+import MeasureUnit from './MeasureUnit';
 
 export default class Product {
     productId: number;
@@ -23,10 +23,6 @@ export default class Product {
             this.userId = userId;
             this.category = category;
             this.measureUnit = measureUnit;
-            
+
     }
-
-
-
-
 }

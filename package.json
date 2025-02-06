@@ -18,6 +18,8 @@
     "react-native-dialog": "^9.3.0",
     "react-native-dropdown-picker": "^5.4.6",
     "react-native-element-dropdown": "^2.12.2",
+    "react-native-pager-view": "^6.6.1",
+    "react-native-tab-view": "^4.0.5",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -25,7 +27,7 @@
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
     "@react-native-community/cli": "15.0.0-alpha.2",
-    "@react-native-community/cli-platform-android": "15.0.0-alpha.2",
+    "@react-native-community/cli-platform-android": "^15.0.0-alpha.2",
     "@react-native-community/cli-platform-ios": "15.0.0-alpha.2",
     "@react-native/babel-preset": "0.76.0",
     "@react-native/eslint-config": "0.76.0",

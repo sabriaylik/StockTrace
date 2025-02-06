@@ -1,36 +1,34 @@
 
 
-import { View, Text, StyleSheet, FlatList } from 'react-native'
-import React, { useEffect, useState } from 'react'
-import { Product } from '../../Models/Interface/Product';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { IProduct } from '../../Models/Interface/Product';
 import productService from '../../services/ProductService';
 
 const ListofProduct = () => {
-
-    const [data,setData] = useState<Product[]>([]);
-
-
-
+    const [data,setData] = useState<IProduct[]>([]);
     const fetchData = async () => {
         // console.log("Started fetchData function")
         const result = await productService.getData();
         setData(result);
-    }
-
-
-
+    };
     useEffect(() => {
         fetchData();
-    },[])
-
-
+    },[]);
 
   return (
     <View>
       <Text style= {styles.title}>List of Product</Text>
-      <FlatList 
+      <FlatList
       data={data}
       keyExtractor={(product) => product.productId.toString()}
+      ListHeaderComponent={
+      <View style={styles.listHeader}>
+                <Text style={styles.explain} >EXPLAIN</Text>
+                <Text style={styles.salePrice}>SALE PRICE</Text>
+                <Text style={styles.category}>CATEGORY</Text>
+     </View>
+        }
       renderItem={({item}) => (
         <View>
             <View style = {styles.row}>
@@ -38,13 +36,12 @@ const ListofProduct = () => {
                 <Text style={styles.salePrice}>{item.salePrice}</Text>
                 <Text style={styles.category}>{item.category.explain}</Text>
             </View>
-            
         </View>
       )}
-      /> 
+      />
     </View>
-  )
-}
+  );
+};
 
 
 const styles = StyleSheet.create({
@@ -61,17 +58,23 @@ const styles = StyleSheet.create({
     },
     explain:{
         flex:9,
-        color:'white'
+        color:'white',
     },
     salePrice:{
-        flex:1,
-        color:'white'
+        flex:3,
+        color:'white',
     },
     category:{
         flex:3,
-        color:'white'
-    }
-})
+        color:'white',
+    },
+    listHeader:{
+        flex:1,
+        flexDirection:'row',
+        marginHorizontal:3,
+        marginVertical:2,
+    },
+});
 
 
 

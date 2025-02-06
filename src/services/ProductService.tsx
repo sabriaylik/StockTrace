@@ -2,8 +2,10 @@
 
 
 import axios, { AxiosResponse } from 'axios';
-import {API_URL,CATEGORY_DELETE,CATEGORY_INSERT,CATEGORY_SELECTALL, PRODUCT_INSERT, PRODUCT_SELECTALL} from '../utils/constants/constants';
-import { ICategory, ResponseCategory, ResponseCategoryAll } from '../Models/Interface/Category';
+import {API_URL,CATEGORY_DELETE, PRODUCT_INSERT, PRODUCT_SELECTALL} from '../utils/constants/constants';
+// import {API_URL,CATEGORY_DELETE,CATEGORY_INSERT,CATEGORY_SELECTALL, PRODUCT_INSERT, PRODUCT_SELECTALL} from '../utils/constants/constants';
+
+// import { ICategory, ResponseCategory, ResponseCategoryAll } from '../Models/Interface/Category';
 import { BaseResponse } from '../Models/Interface/BaseResponse';
 import { IProduct, ResponseProductAll } from '../Models/Interface/Product';
 import Product from '../Models/Concrate/Product';
@@ -20,16 +22,9 @@ class ProductService{
 
     public async getData(): Promise<IProduct[]> {
         try {
-            // console.log("\t\t   Started getData function \n");
-            const response: AxiosResponse<ResponseProductAll> = await axios.get(`${API_URL+PRODUCT_SELECTALL}`);
-            // console.log(`${API_URL+PRODUCT_SELECTALL}`);
-            // console.log("\t\t   LIST OF PRODUCT \n");
-            // console.log(response.data);
-            // console.log(JSON.stringify(response.data.data, null, 4).toString());
-            // console.log("\t\t   LIST OF PRODUCT  END \n")
+            const response: AxiosResponse<ResponseProductAll> = await axios.get(`${API_URL + PRODUCT_SELECTALL}`);
             return response.data.data;
         } catch (error) {
-            console.error('Error fetching data:', error);
             throw error; // Re-throw or handle error as necessary
         }
     }
@@ -67,7 +62,6 @@ class ProductService{
     //         console.log(response);
     //         return response.data.data;
     //     } catch (error) {
-            
     //         console.error('Error posting data:', error);
     //         throw error; // Re-throw or handle error as necessary
     //     }
@@ -103,7 +97,6 @@ class ProductService{
     //         console.log(JSON.stringify(response.data) );
     //         return response.data.data;
     //     } catch (error) {
-            
     //         console.error('Error posting data:', error);
     //         throw error; // Re-throw or handle error as necessary
     //     }
@@ -112,7 +105,8 @@ class ProductService{
 
     public async postData(product: Product): Promise<IProduct[]> {
         try {
-            const response: AxiosResponse<ResponseProductAll> = await axios.post(`${API_URL+PRODUCT_INSERT}`, product);
+            const response: AxiosResponse<ResponseProductAll> = await axios.post(`${API_URL + PRODUCT_INSERT}`, product);
+            console.log(response.data);
             return response.data.data;
         } catch (error) {
             console.error('Error posting data:', error);
@@ -122,22 +116,15 @@ class ProductService{
 
     public async deleteData(data:number): Promise<BaseResponse> {
         try {
-            
             // console.log( `${API_URL+CATEGORY_DELETE+"/"+data}  `   );
-            const response: AxiosResponse<BaseResponse> = await axios.delete(`${API_URL+CATEGORY_DELETE+"/"+data}`);
+            const response: AxiosResponse<BaseResponse> = await axios.delete(`${API_URL + CATEGORY_DELETE + '/' + data}`);
             // console.log(response.data);
             return response.data;
         } catch (error) {
-            
             console.error('Error posting data:', error);
             throw error; // Re-throw or handle error as necessary
         }
     }
-
-
-
-
-
 }
 
 
